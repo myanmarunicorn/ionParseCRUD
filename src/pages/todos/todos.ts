@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-/**
- * Generated class for the TodosPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { TodoProvider as Todo } from '../../providers/todo/todo';
 
 @IonicPage()
 @Component({
@@ -14,12 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'todos.html',
 })
 export class TodosPage {
+  todos: Todo[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TodosPage');
+  ionViewWillEnter() {
+    Todo.get()
+      .then(data => {
+        this.todos = data;
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
-
 }

@@ -5,13 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
+  <ion-list no-lines>
     <ion-item>
       <ion-label floating>Name</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="todo.name"></ion-input>
     </ion-item>
   </ion-list>
   <div padding>
-    <button ion-button block color="primary" (click)="addTodo()">Add</button>
+    <button ion-button block (click)="addTodo()">Add</button>
   </div>
 </ion-content>

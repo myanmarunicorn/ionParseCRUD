@@ -5,6 +5,11 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-list>
+    <ion-item detail-push *ngFor="let todo of todos" navPush="EditTodoPage" [navParams]="todo">
+      {{ todo.name }}
+    </ion-item>
+  </ion-list>
   <ion-fab right bottom>
     <button ion-fab color="danger" navPush="AddTodoPage">
       <ion-icon name="add"></ion-icon>

@@ -16,22 +16,22 @@ export class EditTodoPage {
   }
 
   editTodo() {
-    Todo.save(this.todo).then(
-      () => {
+    Todo.save(this.todo)
+      .then(data => {
         this.navCtrl.pop();
-      },
-      error => {
-
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
 
   removeTodo() {
-    Todo.destroy(this.navParams.data.objectId).then(
-      data => {
+    Todo.destroy(this.navParams.data.objectId)
+      .then(data => {
         this.navCtrl.pop();
-      },
-      error => {
-
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
 }

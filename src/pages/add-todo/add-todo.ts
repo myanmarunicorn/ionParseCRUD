@@ -17,11 +17,11 @@ export class AddTodoPage {
 
   addTodo() {
     this.todo.save().then(
-      () => {
+      data => {
         this.navCtrl.pop();
       },
       error => {
-
+        console.error(error);
       });
   }
 }

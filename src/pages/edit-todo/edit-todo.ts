@@ -9,14 +9,14 @@ import { TodoProvider as Todo } from '../../providers/todo/todo';
   templateUrl: 'edit-todo.html',
 })
 export class EditTodoPage {
-  todo: Todo;
+  todo: object;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.todo = this.navParams.data;
   }
 
   editTodo() {
-    this.todo.save().then(
+    Todo.save(this.todo).then(
       () => {
         this.navCtrl.pop();
       },
@@ -26,8 +26,8 @@ export class EditTodoPage {
   }
 
   removeTodo() {
-    this.todo.destroy().then(
-      () => {
+    Todo.destroy(this.navParams.data.objectId).then(
+      data => {
         this.navCtrl.pop();
       },
       error => {

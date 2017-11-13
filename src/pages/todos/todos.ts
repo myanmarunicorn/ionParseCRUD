@@ -15,7 +15,7 @@ export class TodosPage {
   }
 
   ionViewWillEnter() {
-    Todo.get()
+    Todo.find()
       .then(data => {
         this.todos = data;
       })

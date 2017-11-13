@@ -8,10 +8,25 @@ export class TodoProvider extends Parse.Object {
     super('Todo');
   }
 
-  static get(): Promise<TodoProvider[]> {
+  static find(): Promise<TodoProvider[]> {
     return new Promise((resolve, reject) => {
       let query = new Parse.Query(this);
       query.find().then(resolve, reject);
+    });
+  }
+
+  static save(attrs: object = null): Promise<TodoProvider> {
+    return new Promise((resolve, reject) => {
+      let todo = new TodoProvider();
+      todo.save(attrs).then(resolve, reject);
+    });
+  }
+
+  static destroy(id: string): Promise<TodoProvider> {
+    return new Promise((resolve, reject) => {
+      let todo = new TodoProvider();
+      todo.id = id;
+      todo.destroy().then(resolve, reject);
     });
   }
 

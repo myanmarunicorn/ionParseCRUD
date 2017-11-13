@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item detail-push *ngFor="let todo of todos" navPush="EditTodoPage" [navParams]="todo">
+    <ion-item detail-push *ngFor="let todo of todos" navPush="EditTodoPage" [navParams]="todo.toJSON()">
       {{ todo.name }}
     </ion-item>
   </ion-list>
